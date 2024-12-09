@@ -3,8 +3,13 @@ import "./App.css";
 
 function App() {
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [transcation, setTransaction] = useState("");
+  const [amount, setAmount] = useState(null);
+  const [transaction, setTransaction] = useState([]);
+
+  const Addtrans = (e) => {
+    e.preventDefault();
+    setTransaction([...transaction, { id: Date.now(), description, amount }]);
+  };
 
   return (
     <>
@@ -19,32 +24,33 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {transaction.map((t) => (
+              <tr key={t.id}>
+                <td>{t.description}</td>
+                <td>{t.amount}</td>
+                <td>
+                  <button>Edit</button>
+                  <button id="del">Del</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
-        <form action="submit">
-          <label htmlFor="desc">Description</label>
+        <form onSubmit={Addtrans}>
+          {/* <label htmlFor="desc">Description</label> */}
           <input
-            onChange={(e) => e.target.value}
+            onChange={(e) => setDescription(e.target.value)}
             type="text"
-            value={description}
             name="desc"
             className="inputs"
-            id="desc"
+            placeholder="Description"
           />
-          <label htmlFor="amount">Amount</label>
+          {/* <label htmlFor="amount">Amount</label> */}
           <input
-            onChange={(e) => e.target.value}
+            onChange={(e) => setAmount(e.target.value)}
             type="text"
-            value={amount}
-            htmlFor="amount"
-            name="desc"
             className="inputs"
-            id="amount"
+            placeholder="Amount"
           />
           <button>Done</button>
         </form>
