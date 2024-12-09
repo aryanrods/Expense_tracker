@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
+  const [transcation, setTransaction] = useState("");
 
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
         <form action="submit">
           <label htmlFor="desc">Description</label>
           <input
+            onChange={(e) => e.target.value}
             type="text"
             value={description}
             name="desc"
@@ -36,6 +38,7 @@ function App() {
           />
           <label htmlFor="amount">Amount</label>
           <input
+            onChange={(e) => e.target.value}
             type="text"
             value={amount}
             htmlFor="amount"
