@@ -3,12 +3,37 @@ import "./App.css";
 
 function App() {
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState("");
   const [transaction, setTransaction] = useState([]);
+  const [editId, setEditId] = useState(null);
 
   const Addtrans = (e) => {
     e.preventDefault();
-    setTransaction([...transaction, { id: Date.now(), description, amount }]);
+    if (editId) {
+      const newtransaction = transaction.map((t) =>
+        editId === t.id ? { id: editId, description, amount } : t
+      );
+      setTransaction(newtransaction);
+      setEditId(null);
+      setDescription("");
+      setAmount("");
+    } else {
+      setTransaction([...transaction, { id: Date.now(), description, amount }]);
+      setDescription("");
+      setAmount("");
+    }
+  };
+
+  const handledel = (id) => {
+    const trans = transaction.filter((tran) => tran.id != id);
+
+    setTransaction(trans);
+  };
+
+  const handleEdit = (t) => {
+    setEditId(t.id);
+    setAmount(t.amount);
+    setDescription(t.description);
   };
 
   return (
@@ -29,8 +54,16 @@ function App() {
                 <td>{t.description}</td>
                 <td>{t.amount}</td>
                 <td>
-                  <button>Edit</button>
-                  <button id="del">Del</button>
+                  <button
+                    onClick={(e) => {
+                      handleEdit(t);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button id="del" onClick={(e) => handledel(t.id)}>
+                    Del
+                  </button>
                 </td>
               </tr>
             ))}
@@ -41,9 +74,9 @@ function App() {
           <input
             onChange={(e) => setDescription(e.target.value)}
             type="text"
-            name="desc"
             className="inputs"
             placeholder="Description"
+            value={description}
           />
           {/* <label htmlFor="amount">Amount</label> */}
           <input
@@ -51,6 +84,7 @@ function App() {
             type="text"
             className="inputs"
             placeholder="Amount"
+            value={amount}
           />
           <button>Done</button>
         </form>
