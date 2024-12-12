@@ -14,7 +14,8 @@ A sleek and functional **Expense Tracker** application built using **React**. Th
 - **Real-Time Updates**: Updates the list dynamically without reloading the page.
 
 ## Screenshots
-![Uploading Screenshot 2024-12-11 at 2.31.39 PM.png…]()
+
+![MacBook Air - 1](https://github.com/user-attachments/assets/133b536d-7966-4cbc-8baa-261a8b9c84b6)
 
 
 
