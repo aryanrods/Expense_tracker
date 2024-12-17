@@ -61,7 +61,7 @@ function App() {
                   >
                     Edit
                   </button>
-                  <button id="del" onClick={(e) => handleEdit(t.id)}>
+                  <button id="del" onClick={(e) => handledel(t.id)}>
                     Del
                   </button>
                 </td>
