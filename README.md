@@ -15,7 +15,8 @@ A sleek and functional **Expense Tracker** application built using **React**. Th
 
 ## Screenshots
 
-![MacBook Air - 1](https://github.com/user-attachments/assets/133b536d-7966-4cbc-8baa-261a8b9c84b6)
+
+![MacBook Air - 1 (1)](https://github.com/user-attachments/assets/0510668c-8feb-4132-b7f5-598a7e93e3ab)
 
 
 
